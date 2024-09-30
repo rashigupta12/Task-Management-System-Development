@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import clsx from "clsx";
 import React from "react";
 
@@ -17,5 +15,3 @@ const Button = ({ icon, className, label, type, onClick = () => {} }) => {
 };
 
 export default Button;
-
-

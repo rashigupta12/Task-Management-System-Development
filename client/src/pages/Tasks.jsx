@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { FaList } from "react-icons/fa";
 import { MdGridView } from "react-icons/md";
 import { useParams } from "react-router-dom";
-import Loading from "../components/Loader.jsx";
+import Loading from "../components/Loader";
 import Title from "../components/Title";
 import Button from "../components/Button";
 import { IoMdAdd } from "react-icons/io";

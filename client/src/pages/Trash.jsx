@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import clsx from "clsx";
 import React, { useState } from "react";
 import {
@@ -13,6 +11,7 @@ import { tasks } from "../assets/data";
 import Title from "../components/Title";
 import Button from "../components/Button";
 import { PRIOTITYSTYELS, TASK_TYPE } from "../utils";
+import AddUser from "../components/AddUser";
 import ConfirmatioDialog from "../components/Dialogs";
 
 const ICONS = {
@@ -23,27 +22,14 @@ const ICONS = {
 
 const Trash = () => {
   const [openDialog, setOpenDialog] = useState(false);
+  const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState(null);
   const [type, setType] = useState("delete");
   const [selected, setSelected] = useState("");
 
-  const deleteRestoreHandler = () => {
-    // Implement the logic to delete or restore based on the type and selected ID
-    if (type === "delete") {
-      // Delete the selected item logic here
-    } else if (type === "restore") {
-      // Restore the selected item logic here
-    } else if (type === "deleteAll") {
-      // Delete all items logic here
-    } else if (type === "restoreAll") {
-      // Restore all items logic here
-    }
-    setOpenDialog(false);
-  };
-
   const deleteAllClick = () => {
     setType("deleteAll");
-    setMsg("Do you want to permanently delete all items?");
+    setMsg("Do you want to permenantly delete all items?");
     setOpenDialog(true);
   };
 
@@ -56,7 +42,6 @@ const Trash = () => {
   const deleteClick = (id) => {
     setType("delete");
     setSelected(id);
-    setMsg("Do you want to permanently delete this item?");
     setOpenDialog(true);
   };
 
@@ -69,12 +54,11 @@ const Trash = () => {
 
   const TableHeader = () => (
     <thead className='border-b border-gray-300'>
-      <tr className='text-black text-left'>
+      <tr className='text-black  text-left'>
         <th className='py-2'>Task Title</th>
         <th className='py-2'>Priority</th>
         <th className='py-2'>Stage</th>
-        <th className='py-2'>Modified On</th>
-        <th className='py-2'>Actions</th>
+        <th className='py-2 line-clamp-1'>Modified On</th>
       </tr>
     </thead>
   );
@@ -83,7 +67,9 @@ const Trash = () => {
     <tr className='border-b border-gray-200 text-gray-600 hover:bg-gray-400/10'>
       <td className='py-2'>
         <div className='flex items-center gap-2'>
-          <div className={clsx("w-4 h-4 rounded-full", TASK_TYPE[item.stage])} />
+          <div
+            className={clsx("w-4 h-4 rounded-full", TASK_TYPE[item.stage])}
+          />
           <p className='w-full line-clamp-2 text-base text-black'>
             {item?.title}
           </p>
@@ -91,11 +77,11 @@ const Trash = () => {
       </td>
 
       <td className='py-2 capitalize'>
-        <div className='flex gap-1 items-center'>
+        <div className={"flex gap-1 items-center"}>
           <span className={clsx("text-lg", PRIOTITYSTYELS[item?.priority])}>
             {ICONS[item?.priority]}
           </span>
-          <span>{item?.priority}</span>
+          <span className=''>{item?.priority}</span>
         </div>
       </td>
 
@@ -122,18 +108,19 @@ const Trash = () => {
       <div className='w-full md:px-1 px-0 mb-6'>
         <div className='flex items-center justify-between mb-8'>
           <Title title='Trashed Tasks' />
+
           <div className='flex gap-2 md:gap-4 items-center'>
             <Button
               label='Restore All'
               icon={<MdOutlineRestore className='text-lg hidden md:flex' />}
-              className='flex flex-row-reverse gap-1 items-center text-black text-sm md:text-base rounded-md 2xl:py-2.5'
-              onClick={restoreAllClick}
+              className='flex flex-row-reverse gap-1 items-center  text-black text-sm md:text-base rounded-md 2xl:py-2.5'
+              onClick={() => restoreAllClick()}
             />
             <Button
               label='Delete All'
               icon={<MdDelete className='text-lg hidden md:flex' />}
-              className='flex flex-row-reverse gap-1 items-center text-red-600 text-sm md:text-base rounded-md 2xl:py-2.5'
-              onClick={deleteAllClick}
+              className='flex flex-row-reverse gap-1 items-center  text-red-600 text-sm md:text-base rounded-md 2xl:py-2.5'
+              onClick={() => deleteAllClick()}
             />
           </div>
         </div>
@@ -142,14 +129,16 @@ const Trash = () => {
             <table className='w-full mb-5'>
               <TableHeader />
               <tbody>
-                {tasks?.map((tk) => (
-                  <TableRow key={tk._id} item={tk} />
+                {tasks?.map((tk, id) => (
+                  <TableRow key={id} item={tk} />
                 ))}
               </tbody>
             </table>
           </div>
         </div>
       </div>
+
+      {/* <AddUser open={open} setOpen={setOpen} /> */}
 
       <ConfirmatioDialog
         open={openDialog}
@@ -158,7 +147,7 @@ const Trash = () => {
         setMsg={setMsg}
         type={type}
         setType={setType}
-        onClick={deleteRestoreHandler}
+        onClick={() => deleteRestoreHandler()}
       />
     </>
   );

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { createSlice } from "@reduxjs/toolkit";
 import { user } from "../../assets/data";
 
@@ -19,8 +18,8 @@ const authSlice = createSlice({
       localStorage.setItem("userInfo", JSON.stringify(action.payload));
     },
     logout: (state, action) => {
-      state.user = null;
-      localStorage.removeItem("userInfo");
+      state.user = null; // Clear the user from the Redux store
+      localStorage.removeItem("userInfo"); // Clear user info from local storage
     },
     setOpenSidebar: (state, action) => {
       state.isSidebarOpen = action.payload;

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Popover, Transition } from "@headlessui/react";
 import moment from "moment";
 import { Fragment, useState } from "react";

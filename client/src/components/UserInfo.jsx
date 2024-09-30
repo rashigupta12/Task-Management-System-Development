@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { Popover, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { getInitials } from "../utils";
 
 const UserInfo = ({ user }) => {

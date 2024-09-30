@@ -1,6 +1,3 @@
-/* eslint-disable no-constant-binary-expression */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from "react";
 import {
   MdAdminPanelSettings,
@@ -203,7 +200,7 @@ const Dashboard = () => {
     );
   };
   return (
-    <div className='h-full py-4'>
+    <div classNamee='h-full py-4'>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-5'>
         {stats.map(({ icon, bg, label, total }, index) => (
           <Card key={index} icon={icon} bg={bg} label={label} count={total} />

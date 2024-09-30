@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/display-name */
- 
 import React from "react";
 import clsx from "clsx";
 
@@ -36,5 +33,3 @@ const Textbox = React.forwardRef(
   }
 );
 export default Textbox;
-
-

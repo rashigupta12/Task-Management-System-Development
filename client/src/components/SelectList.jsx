@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import { Listbox, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { BsChevronExpand } from "react-icons/bs";

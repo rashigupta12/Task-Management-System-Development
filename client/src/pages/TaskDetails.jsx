@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import clsx from "clsx";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaBug, FaTasks, FaThumbsUp, FaUser } from "react-icons/fa";
 import { GrInProgress } from "react-icons/gr";
 import {
@@ -88,45 +86,15 @@ const act_types = [
   "Assigned",
 ];
 
-
-
-
 const TaskDetails = () => {
   const { id } = useParams();
-  console.log(id);
 
   const [selected, setSelected] = useState(0);
-  const [task, setTask] = useState(null);
-  const [loading, setLoading] = useState(true);
-  // const task = tasks[3];
-  useEffect(() => {
-    const fetchTaskDetails = () => {
-      console.log("Available tasks:", tasks); // Log available tasks
-      const foundTask = tasks.find(task => task._id === id); // Assuming id is a string
-      console.log("Found task:", foundTask); // Log found task
-      if (foundTask) {
-        setTask(foundTask);
-      } else {
-        setTask(null);
-      }
-      setLoading(false);
-    };
-  
-    fetchTaskDetails();
-  }, [id, tasks]);
-  
-
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (!task) {
-    return <div>No task found</div>;
-  }
+  const task = tasks[3];
 
   return (
     <div className='w-full flex flex-col gap-3 mb-4 overflow-y-hidden'>
-      <h1 className='text-2xl text-gray-600 font-bold'>{task.title}</h1>
+      <h1 className='text-2xl text-gray-600 font-bold'>{task?.title}</h1>
 
       <Tabs tabs={TABS} setSelected={setSelected}>
         {selected === 0 ? (

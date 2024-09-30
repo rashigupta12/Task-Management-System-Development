@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";

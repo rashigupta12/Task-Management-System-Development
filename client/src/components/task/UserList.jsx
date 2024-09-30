@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
 import { BsChevronExpand } from "react-icons/bs";
