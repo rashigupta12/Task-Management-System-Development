@@ -15,6 +15,7 @@ import { FaList } from "react-icons/fa";
 import UserInfo from "../UserInfo";
 import Button from "../Button";
 import ConfirmatioDialog from "../Dialogs.jsx";
+import { useNavigate } from "react-router-dom";
 
 const ICONS = {
   high: <MdKeyboardDoubleArrowUp />,
@@ -23,6 +24,7 @@ const ICONS = {
 };
 
 const Table = ({ tasks }) => {
+  const navigate = useNavigate();
   const [openDialog, setOpenDialog] = useState(false);
   const [selected, setSelected] = useState(null);
 
@@ -52,7 +54,7 @@ const Table = ({ tasks }) => {
           <div
             className={clsx("w-4 h-4 rounded-full", TASK_TYPE[task.stage])}
           />
-          <p className='w-full line-clamp-2 text-base text-black'>
+          <p className='w-full line-clamp-2 text-base text-black' onClick={() => navigate(`/task/${task._id}`)}>
             {task?.title}
           </p>
         </div>
